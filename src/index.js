@@ -2,7 +2,7 @@ import useNggImporter from './useNggImporter'
 import util from './util'
 
 export {
-    useNggImporter
+    useNggImporter,
     util
 }
 
