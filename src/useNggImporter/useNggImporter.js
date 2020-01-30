@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import runNggImport from '../../util/runNggImport'
+import runNggImport from '../util/runNggImport'
 
 const useNggImporter = props => {
   const {

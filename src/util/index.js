@@ -1,5 +1,5 @@
-import './processFile'
-import './runNggImport'
+import processFile from './processFile'
+import runNggImport from './runNggImport'
 
 export default {
     processFile,
