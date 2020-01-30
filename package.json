@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx wp-scripts build",
     "prepare": "npm run build",
-    "postinstall": "npm run prepare &>/dev/null"
+    "postinstall": "npm run prepare"
   },
   "repository": {
     "type": "git",
