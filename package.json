@@ -1,16 +1,17 @@
 {
-  "name": "@reactr/ngg-importer-react-hooks",
+  "name": "@reactr-io/ngg-importer-lib",
   "version": "1.0.0",
   "description": "React hooks for importing NextGEN Gallery data",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "npx wp-scripts build",
-    "preinstall": "npm run prepare"
+    "build": "npx wp-scripts build",
+    "prepare": "npm run build",
+    "postinstall": "npm run prepare &>/dev/null"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reactr-io/ngg-importer-react-hooks.git"
+    "url": "git+https://github.com/reactr-io/ngg-importer-lib.git"
   },
   "keywords": [
     "NGG",
@@ -21,9 +22,9 @@
   "author": "Reactr",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/reactr-io/ngg-importer-react-hooks/issues"
+    "url": "https://github.com/reactr-io/ngg-importer-lib/issues"
   },
-  "homepage": "https://github.com/reactr-io/ngg-importer-react-hooks#readme",
+  "homepage": "https://github.com/reactr-io/ngg-importer-lib#readme",
   "dependencies": {
     "axios": "^0.19.2"
   },
