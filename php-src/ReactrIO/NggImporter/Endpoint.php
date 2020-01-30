@@ -6,6 +6,18 @@ class Endpoint
 {
     const VERSION='v1';
 
+    protected static $_instances = array();
+    public static function get_instance($endpoint_name, $max_execution=30)
+    {
+        if (!isset(self::$_instances[$endpoint_name])) {
+            $klass = get_called_class();
+            self::$_instances[$endpoint_name] = new $klass($endpoint_name, $max_execution);
+        }
+        $retval = self::$_instances[$endpoint_name];
+        $retval->max_execution = $max_execution;
+        return $retval;
+    }
+
     function __construct($endpoint_name, $max_execution=30)
     {
         $this->max_execution = $max_execution;
