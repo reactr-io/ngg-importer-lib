@@ -1,9 +1,9 @@
-import hooks from './hooks'
+import useNggImporter from './useNggImporter'
 import util from './util'
 
 export {
-    hooks,
+    useNggImporter
     util
 }
 
-export default hooks
+export default useNggImporter
