@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Reactr\\": "./Reactr"
+            "ReactrIO\\": "./php-src/ReactrIO"
         }
     },
     "repositories": [
