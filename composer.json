@@ -1,0 +1,23 @@
+{
+    "name": "reactr-io/ngg-importer-lib",
+    "description": "https://github.com/reactr-io/ngg-importer-lib",
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Michael Weichert",
+            "email": "mweichert@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Reactr\\": "./Reactr"
+        }
+    },
+    "repositories": [
+        {"type": "composer", "url": "https://repo.packagist.com/michael-weichert/"},
+        {"type": "composer", "url": "https://repo.packagist.com/reactr-io/"},
+        {"packagist.org": false}
+    ],
+    "require": {
+    }
+}
