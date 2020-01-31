@@ -13,7 +13,7 @@ namespace ReactrIO\NggImporter;
  * @return \ExtensibleObject
  */
 function modify_datamapper($mapper) {
-	if (defined('NGG_PLUGIN_VERSION') && !class_exists('Ngg_Export_Mapper_Mixin', FALSE)) {
+	if (defined('NGG_PLUGIN_VERSION') && !class_exists('\ReactrIO\NggImporter\Ngg_Export_Mapper_Mixin', FALSE)) {
 		class Ngg_Export_Mapper_Mixin extends \Mixin
 		{
 			/**
@@ -49,11 +49,11 @@ function modify_datamapper($mapper) {
 	}
 
 	// Apply mixin to mapper
-	if (!$mapper->has_mixin('Ngg_Export_Mapper_Mixin')) {
+	if (!$mapper->has_mixin('\ReactrIO\NggImporter\Ngg_Export_Mapper_Mixin')) {
 		/**
 		 * @var $mapper ExtensibleObject
 		 */
-		$mapper->add_mixin('Ngg_Export_Mapper_Mixin', TRUE);
+		$mapper->add_mixin('\ReactrIO\NggImporter\Ngg_Export_Mapper_Mixin', TRUE);
 		$priorities = array();
 
 		// Remove Ngg_Export_Mapper_Mixin
@@ -65,10 +65,10 @@ function modify_datamapper($mapper) {
 		// Pop C_CustomTable_DataMapper_Driver_Mixin
 		$priorities[] = array_pop($mapper->_mixin_priorities);
 
-		$mapper->_mixin_priorities[] = 'Ngg_Export_Mapper_Mixin';
+		$mapper->_mixin_priorities[] = '\ReactrIO\NggImporter\Ngg_Export_Mapper_Mixin';
 		foreach ($priorities as $mixin) $mapper->_mixin_priorities[] = $mixin;
 		$mapper->_flush_cache();
 	}
 
 	return $mapper;
-}
+} 
