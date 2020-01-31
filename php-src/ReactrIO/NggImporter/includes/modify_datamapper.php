@@ -10,11 +10,11 @@ namespace ReactrIO\NggImporter;
  *
  * @param $mapper
  *
- * @return ExtensibleObject
+ * @return \ExtensibleObject
  */
 function modify_datamapper($mapper) {
 	if (defined('NGG_PLUGIN_VERSION') && !class_exists('Ngg_Export_Mapper_Mixin', FALSE)) {
-		class Ngg_Export_Mapper_Mixin extends Mixin
+		class Ngg_Export_Mapper_Mixin extends \Mixin
 		{
 			/**
 			 * Stores the entity
