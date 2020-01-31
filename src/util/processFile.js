@@ -1,6 +1,8 @@
 import { isObject } from 'util'
 
 const axios = require('axios').default
+axios.defaults.withCredentials = true
+axios.defaults.headers.common['X-WP-Nonce'] = wpApiSettings.nonce
 
 /**
  * Calls the notifiying function, but returns the original data
