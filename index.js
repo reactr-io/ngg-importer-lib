@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV === 'development') {
-    module.exports = require('./src')
+  module.exports = require('./src')
 } else {
-    module.exports = require('./build')
-}  
+  module.exports = require('./build')
+}
