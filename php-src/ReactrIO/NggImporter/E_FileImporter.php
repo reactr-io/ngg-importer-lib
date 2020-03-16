@@ -2,7 +2,7 @@
 
 namespace ReactrIO\NggImporter;
 
-class E_FileImporter extends RuntimeException
+class E_FileImporter extends \RuntimeException
 {
     // Use this instead of the constructor.
     //

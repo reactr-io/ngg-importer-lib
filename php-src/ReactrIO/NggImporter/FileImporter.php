@@ -266,7 +266,7 @@ class FileImporter
                 'import_gallery',
                 function($err_msg) use ($mapper, $gallery) {
                     $retval = $mapper->save($gallery);
-                    if (!$retval) throw new RuntimeException($err_msg);
+                    if (!$retval) throw new \RuntimeException($err_msg);
                     return $retval;
                 },
                 "Could not import gallery ID {$gallery->gid}"
@@ -292,7 +292,7 @@ class FileImporter
                 'import_album',
                 function($err_msg) use ($mapper, $album) {
                     $retval = $mapper->save($album);
-                    if (!$retval) throw new RuntimeException($err_msg);
+                    if (!$retval) throw new \RuntimeException($err_msg);
                     return $retval;
                 },
                 "Could not import album ID {$album->id}"
@@ -412,7 +412,7 @@ class FileImporter
 
                     if (!$retval) error_log("Could not save image:");
 
-                    if (!$retval) throw new RuntimeException($err_msg);
+                    if (!$retval) throw new \RuntimeException($err_msg);
                     
                     // Flag as done
                     $this->set_object_flag('imported_db');
@@ -510,7 +510,7 @@ class FileImporter
         $gallery_abspath = dirname($image_abspath);
         wp_mkdir_p(dirname($temp_abspath));
         if (!wp_mkdir_p($gallery_abspath)) {
-            throw new RuntimeException("Could not create directory, {$gallery_abspath}");
+            throw new \RuntimeException("Could not create directory, {$gallery_abspath}");
         }
 
         $timeout = $this->get_time_remaining(400/1000); 
@@ -531,12 +531,12 @@ class FileImporter
             error_log("Could not fetch {$url}");
             error_log(print_r($response, TRUE));
             $this->elapsed = $this->max_time_limit;
-            throw new RuntimeException("Could not download {$url}");
+            throw new \RuntimeException("Could not download {$url}");
         } else {
             @copy($temp_abspath, $image_abspath);
             @unlink($temp_abspath);
             if (!@file_exists($image_abspath)) {
-                throw new RuntimeException("We were able to download {$url}, but could not move it from {$temp_abspath} to {$image_abspath}");
+                throw new \RuntimeException("We were able to download {$url}, but could not move it from {$temp_abspath} to {$image_abspath}");
             }
         }
 

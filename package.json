@@ -1,6 +1,6 @@
 {
   "name": "@reactr-io/ngg-importer-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React hooks for importing NextGEN Gallery data",
   "main": "index.js",
   "scripts": {
