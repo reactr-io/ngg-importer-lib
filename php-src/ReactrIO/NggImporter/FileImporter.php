@@ -382,10 +382,10 @@ class FileImporter
             // Store information we're about to unset. We'll need it if we have to revert on failure
             $orig_data = array(
                 'urls'              =>  $image->urls,
-                'extras_post_id'    =>  $image->extras_post_id,
                 'meta_data'         =>  $image->meta_data,
                 'tags'              =>  property_exists($image, 'tags') ? $image->tags : array()
             );
+            if (isset($image->extras_post_id)) $orig_data['extras_post_id'] = $image->extras_post_id;
 
             // Remove stale data
             unset($image->urls);
