@@ -69,8 +69,9 @@ const runNggImport = params => {
       : retval
   }
   
+  
   return [importGalleries, importAlbums, importImages].reduce(
-    (retval, fn) => fn(retval),
+    async (retval, fn) => await fn(retval),
     Promise.resolve()
   ).then(onFinished);
 }

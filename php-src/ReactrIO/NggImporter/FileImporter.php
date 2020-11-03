@@ -267,6 +267,9 @@ class FileImporter
                 function($err_msg) use ($mapper, $gallery) {
                     $retval = $mapper->save($gallery);
                     if (!$retval) throw new \RuntimeException($err_msg);
+
+                    $this->mark_object_as_done();
+
                     return $retval;
                 },
                 "Could not import gallery ID {$gallery->gid}"
@@ -293,6 +296,9 @@ class FileImporter
                 function($err_msg) use ($mapper, $album) {
                     $retval = $mapper->save($album);
                     if (!$retval) throw new \RuntimeException($err_msg);
+
+                    $this->mark_object_as_done();
+
                     return $retval;
                 },
                 "Could not import album ID {$album->id}"
@@ -617,12 +623,12 @@ class FileImporter
 
     function can_continue_importing()
     {
-        return count($this->data->objects) && !$this->has_reached_time_limit() && !$this->is_finished();
+        return !$this->has_reached_time_limit() && !$this->is_finished();
     }
 
     function is_finished()
     {
-        return $this->data->status->total === ($this->data->status->done + $this->data->status->aborted + $this->data->status->skipped);
+        return count($this->data->objects) === 0;
     }
 
     function get_author()
