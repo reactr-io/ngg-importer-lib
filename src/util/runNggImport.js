@@ -42,34 +42,37 @@ const runNggImport = params => {
     onError :  onImageError
   })
 
-  const retval = Promise.resolve()
-
-  // Import galleries
-  if (galleryFilename) {
-    retval
-      .then(() => processGalleryFile(galleryFilename))
-      .then(onGalleryFinished)
-      .catch(onGalleryError)
+  const importGalleries = retval => {
+    return galleryFilename
+      ? retval
+        .then(() => processGalleryFile(galleryFilename))
+        .then(onGalleryFinished)
+        .catch(onGalleryError)
+      : retval
   }
 
-  // Import albums
-  if (albumFilename) {
-    retval
-      .then(() => processAlbumFile(albumFilename))
-      .then(onAlbumFinished)
-      .catch(onAlbumError)
+  const importAlbums = retval => {
+    return albumFilename
+      ? retval
+        .then(() => processAlbumFile(albumFilename))
+        .then(onAlbumFinished)
+        .catch(onAlbumError)
+      : retval
   }
 
-  // Import images
-  if (imageFilename) {
-    retval
-      .then(() => processImageFile(imageFilename))
-      .then(onImageFinished)
-      .catch(onImageError)
+  const importImages = retval => {
+    return imageFilename
+      ? retval
+        .then(() => processImageFile(imageFilename))
+        .then(onImageFinished)
+        .catch(onImageError)
+      : retval
   }
-
-  return retval
-    .then(onFinished)
+  
+  return [importGalleries, importAlbums, importImages].reduce(
+    (retval, fn) => fn(retval),
+    Promise.resolve()
+  ).then(onFinished);
 }
 
 export default runNggImport
