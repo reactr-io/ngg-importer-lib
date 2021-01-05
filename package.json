@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/reactr-io/ngg-importer-lib#readme",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.21.1"
   },
   "devDependencies": {
     "@wordpress/scripts": "^6.2.0"
